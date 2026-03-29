@@ -368,6 +368,11 @@ h2.landing-info-h2 {
   display: none;
 }
 
+/* Shown only in responsive hero (see max-width: 1024px block below) */
+.landing-resume-link {
+  display: none;
+}
+
 @media screen and (min-width: 500px) {
   .landing-circle2 {
     display: block;
@@ -687,28 +692,29 @@ h2.landing-info-h2 {
     position: relative;
     width: min(100%, 430px);
     max-width: 100%;
-    height: min(42vh, 380px);
-    min-height: clamp(220px, 38vh, 340px);
+    height: min(46vh, 400px);
+    min-height: clamp(240px, 40vh, 360px);
     flex-shrink: 0;
     z-index: 2;
     margin-left: auto;
     margin-right: auto;
     align-self: center;
     overflow: hidden;
-    border-radius: var(--radius-md, 12px);
-    /* Soft fade top + bottom — blends the 3D block into the page */
+    /* Sharp frame reads as a viewport, not a pill/capsule */
+    border-radius: 0;
+    /* Light edge fade only — strong 10–78% band looked like a horizontal capsule */
     mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 10%,
-      #000 78%,
+      #000 3%,
+      #000 97%,
       transparent 100%
     );
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 10%,
-      #000 78%,
+      #000 3%,
+      #000 97%,
       transparent 100%
     );
   }
@@ -720,7 +726,7 @@ h2.landing-info-h2 {
     border-radius: inherit;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .landing-visual .character-model {
@@ -780,6 +786,62 @@ h2.landing-info-h2 {
     display: none;
   }
 
+  .landing-resume-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: clamp(10px, 3.2vw, 20px);
+    min-height: 48px;
+    padding: 12px 22px;
+    box-sizing: border-box;
+    width: max-content;
+    max-width: calc(100% - 8px);
+    text-decoration: none;
+    color: rgba(196, 255, 244, 0.96);
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid rgba(94, 234, 212, 0.32);
+    border-radius: var(--radius-md, 12px);
+    background: linear-gradient(
+      165deg,
+      rgba(10, 14, 23, 0.82) 0%,
+      rgba(6, 10, 18, 0.55) 100%
+    );
+    box-shadow:
+      0 4px 0 rgba(94, 234, 212, 0.05) inset,
+      0 16px 40px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .landing-resume-link:active {
+    border-color: rgba(94, 234, 212, 0.5);
+    box-shadow:
+      0 4px 0 rgba(94, 234, 212, 0.08) inset,
+      0 12px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .landing-resume-link .hover-link {
+    color: inherit;
+  }
+
+  .landing-resume-link .hover-in,
+  .landing-resume-link .hover-in div {
+    color: inherit;
+  }
+
+  .landing-resume-icon {
+    display: flex;
+    align-items: center;
+    color: var(--accentColor);
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+
   .character-rim {
     width: min(62vw, 360px);
     height: min(62vw, 360px);
@@ -818,14 +880,14 @@ h2.landing-info-h2 {
   }
 
   .landing-visual {
-    width: min(92vw, 390px);
-    height: min(44vh, 320px);
-    min-height: 240px;
+    width: min(90vw, 380px);
+    height: min(50vh, 360px);
+    min-height: 260px;
   }
 
   .character-rim {
-    width: min(72vw, 260px);
-    height: min(72vw, 260px);
+    width: min(68vw, 280px);
+    height: min(68vw, 280px);
   }
 }
 
@@ -857,17 +919,17 @@ h2.landing-info-h2 {
   }
 
   .landing-visual {
-    width: min(92vw, 360px);
-    height: min(42vh, 300px);
-    min-height: 220px;
+    width: min(88vw, 360px);
+    height: min(48vh, 340px);
+    min-height: 248px;
   }
 }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
   .landing-visual {
-    height: min(50vh, 460px);
-    min-height: clamp(300px, 46vh, 400px);
-    width: min(94vw, 520px);
+    height: min(52vh, 480px);
+    min-height: clamp(320px, 48vh, 420px);
+    width: min(90vw, 500px);
   }
 
   .landing-visual .character-model {

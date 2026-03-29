@@ -1,9 +1,11 @@
 import { PropsWithChildren } from "react";
+import { TbNotes } from "react-icons/tb";
 import "./styles/Landing.css";
 import { portfolioData } from "../data/portfolioData";
+import HoverLinks from "./HoverLinks";
 
 const Landing = ({ children }: PropsWithChildren) => {
-  const { hero } = portfolioData;
+  const { hero, socialLinks } = portfolioData;
 
   return (
     <>
@@ -33,6 +35,19 @@ const Landing = ({ children }: PropsWithChildren) => {
               <div className="landing-h2-info-1">{hero.rolePrimary}</div>
             </h2>
           </div>
+          <a
+            className="landing-resume-link"
+            href={socialLinks.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="disable"
+            aria-label="Open resume (opens in new tab)"
+          >
+            <HoverLinks text="RESUME" cursor />
+            <span className="landing-resume-icon" aria-hidden="true">
+              <TbNotes />
+            </span>
+          </a>
         </div>
       </section>
     </>
