@@ -14,16 +14,22 @@ export function getPerformanceMode(): PerformanceMode {
     "(prefers-reduced-motion: reduce)"
   ).matches;
   const saveData = nav.connection?.saveData === true;
-  const deviceMemory = nav.deviceMemory ?? 8;
-  const hardwareConcurrency = nav.hardwareConcurrency ?? 8;
+  const reportedMemory = nav.deviceMemory;
+  const reportedCores = nav.hardwareConcurrency;
 
-  /* Do not force "lite" from width alone: that replaces the GLTF hero with the
-     CSS fallback (orb + blob), which reads as a "capsule" on phones. Lite is
-     for save-data, reduced motion, or clearly constrained hardware only. */
+  /* DevTools “responsive” still uses desktop navigator, so local looks “full” while
+     real phones often report 4 cores or 4GB RAM — old thresholds (<=4) forced lite
+     and the CSS-only “capsule” fallback on many handsets. Only treat *reported*
+     very low values as lite; missing APIs default to full. */
+  const veryLowMemory =
+    typeof reportedMemory === "number" && reportedMemory <= 2;
+  const veryLowCores =
+    typeof reportedCores === "number" && reportedCores <= 2;
+
   return prefersReducedMotion ||
     saveData ||
-    deviceMemory <= 4 ||
-    hardwareConcurrency <= 4
+    veryLowMemory ||
+    veryLowCores
     ? "lite"
     : "full";
 }
