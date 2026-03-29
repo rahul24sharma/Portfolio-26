@@ -1,0 +1,27 @@
+.hover-link {
+  position: relative;
+  display: flex;
+  text-wrap: nowrap;
+  overflow: hidden;
+}
+.hover-in {
+  position: relative;
+  transition: 0.3s;
+}
+.hover-in div {
+  display: flex;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hover-link:hover .hover-in {
+    transform: translateY(-100%);
+    color: var(--accentColor);
+  }
+}
+
+.hover-link:focus-visible .hover-in {
+  transform: translateY(-100%);
+  color: var(--accentColor);
+}
