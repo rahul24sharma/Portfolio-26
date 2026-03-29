@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm install",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "installCommand": "cd 3d-portfolio && npm ci",
+  "buildCommand": "cd 3d-portfolio && npm run build",
+  "outputDirectory": "3d-portfolio/dist",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
   "headers": [
     {
