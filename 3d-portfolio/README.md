@@ -8,7 +8,7 @@ Personal portfolio site for **Rahul Sharma**, a **Full Stack Engineer** and **AI
 - [GitHub](https://github.com/rahul24sharma)
 - Live site: update this line after you deploy (for example your Vercel URL). A previous deployment reference: [portfolio (Vercel)](https://portfolio-25-s-rahul.vercel.app/).
 
-![Portfolio preview]
+![Portfolio preview](public/images/rahul.png)
 
 ## About
 
