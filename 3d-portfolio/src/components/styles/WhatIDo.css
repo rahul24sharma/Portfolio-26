@@ -286,8 +286,9 @@
 @media only screen and (max-width: 1024px) {
   .whatIDO {
     height: auto;
-    padding: 64px 0px 50px;
-    width: min(100%, calc(100% - 28px));
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
   }
   .what-box-in {
     height: auto;

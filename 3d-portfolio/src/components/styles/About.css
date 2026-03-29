@@ -1,20 +1,24 @@
 .about-section {
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: flex-start;
   place-items: center;
   position: relative;
+  z-index: 2;
   opacity: 1;
   height: auto;
   width: var(--cWidth);
+  max-width: 100%;
   margin: auto;
   padding: 40px 0 0;
+  box-sizing: border-box;
 }
 .about-me {
   padding: 24px 0px;
   padding-bottom: 0;
   width: min(620px, 100%);
   max-width: 100%;
+  margin-inline: auto;
 }
 .about-me h3 {
   font-size: clamp(18px, 4vw, 25px);
@@ -33,35 +37,80 @@
   color: var(--text-muted);
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 1024px) {
   .about-section {
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(24px, 7vw, 56px) 0 0;
+    height: auto;
+    min-height: 0;
+    position: relative;
+    z-index: 18;
+    isolation: isolate;
   }
-}
-@media only screen and (min-width: 768px) {
+
   .about-me {
-    width: 500px;
-    max-width: calc(100% - 70px);
-    transform: translateY(0%);
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: min(620px, 100%);
+    max-width: 100%;
+    transform: none;
   }
-  .about-section {
-    opacity: 1;
+
+  .about-me h3,
+  .about-me p {
+    text-align: center;
   }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .about-me {
+    width: min(520px, 100%);
+    max-width: 100%;
+  }
+}
+
 @media only screen and (min-width: 1025px) {
+  /* Above .character-model (z-index: 11) so copy isn’t covered by the fixed hero */
   .about-section {
     width: var(--cWidth);
-    justify-content: right;
+    justify-content: center;
+    align-items: center;
     max-width: 1920px;
     height: var(--vh);
-    padding: 0px;
+    padding: 0;
     opacity: 1;
+    z-index: 20;
+    isolation: isolate;
   }
+
   .about-me {
-    padding: 0px;
-    width: 50%;
+    display: grid;
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+    column-gap: clamp(36px, 5vw, 100px);
+    row-gap: 28px;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 clamp(12px, 2vw, 32px);
+    box-sizing: border-box;
+    text-align: left;
+    transform: translateY(0%);
   }
+
+  .about-me h3 {
+    text-align: left;
+    justify-self: start;
+    align-self: center;
+    letter-spacing: clamp(4px, 0.45vw, 7px);
+  }
+
   .about-me p {
+    text-align: left;
+    margin: 0;
     font-size: 1.9vw;
     line-height: 2.3vw;
   }

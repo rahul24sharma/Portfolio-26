@@ -391,11 +391,14 @@
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1024px) {
   .work-section {
-    padding: 50px 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
+}
 
+@media only screen and (max-width: 900px) {
   .work-section h2 {
     font-size: 40px;
     margin-bottom: 30px;

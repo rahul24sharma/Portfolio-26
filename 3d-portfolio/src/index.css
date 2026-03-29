@@ -189,11 +189,53 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
+  :root {
+    --section-gap-y: clamp(56px, 12vw, 88px);
+    --section-pad-x: max(16px, var(--safe-left)) max(16px, var(--safe-right));
+  }
+
+  /* Even vertical rhythm + shared horizontal inset for all main sections */
   #smooth-content > .container-main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--section-gap-y);
     width: 100%;
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
+    box-sizing: border-box;
+    padding-left: max(16px, var(--safe-left));
+    padding-right: max(16px, var(--safe-right));
+    padding-bottom: max(28px, calc(16px + var(--safe-bottom)));
+  }
+
+  #smooth-content > .container-main > .landing-section {
+    margin: 0;
+    margin-bottom: clamp(40px, 10vw, 96px);
+    width: 100%;
+    max-width: 100%;
+    flex-shrink: 0;
+  }
+
+  #smooth-content > .container-main > section,
+  #smooth-content > .container-main > .techstack {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Tighter rhythm only after About; keep larger gap elsewhere (e.g. hero → About) */
+  #smooth-content > .container-main > .about-section + .whatIDO {
+    margin-top: clamp(-52px, -7vw, -28px);
+  }
+
+  #smooth-content > .container-main .section-container {
+    width: 100%;
+    max-width: 100%;
   }
 }
 

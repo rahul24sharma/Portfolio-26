@@ -1,176 +1,89 @@
-# 3D Portfolio Website
+# Rahul Sharma — 3D Portfolio
 
-This repository contains the source code for a personal 3D portfolio built with React, TypeScript, Three.js, React Three Fiber, and GSAP. It includes animated page sections, a character scene, custom cursor interactions, and smooth transitions designed for a modern portfolio experience.
+Personal portfolio site for **Rahul Sharma**, a **Full Stack Engineer** and **AI Builder** focused on production systems, distributed backends, and applied AI. This repo is a React + TypeScript + Three.js experience: interactive 3D hero, scroll-driven storytelling, and sections for work, career, and contact.
 
-Live site: [https://akashrmalhotra.netlify.app/](https://akashrmalhotra.netlify.app/)
+**Links**
 
-![Portfolio Preview](public/images/preview1.png)
+- [LinkedIn](https://www.linkedin.com/in/rsharma84/)
+- [GitHub](https://github.com/rahul24sharma)
+- Live site: update this line after you deploy (for example your Vercel URL). A previous deployment reference: [portfolio (Vercel)](https://portfolio-25-s-rahul.vercel.app/).
 
-## Table of Contents
+![Portfolio preview](public/images/preview1.png)
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
-- [GSAP License Note](#gsap-license-note)
-- [Customization Guide](#customization-guide)
-- [Troubleshooting](#troubleshooting)
-- [Deployment](#deployment)
-- [License](#license)
+## About
 
-## Features
+Full stack software engineer with **2+ years** of experience shipping scalable, production-grade systems in **Java**, **Python**, and **TypeScript** — from event-driven backends and cloud infrastructure to responsive frontends and **LLM-powered** workflows.
 
-- Responsive one-page portfolio layout with reusable section components.
-- 3D character scene rendering powered by React Three Fiber and Three.js.
-- GSAP-powered animations and transitions for interactive storytelling.
-- Custom cursor, hover interactions, and scroll-driven visual effects.
-- Organized component architecture with dedicated utilities and style modules.
+**Currently:** MS in **Information Systems** at **Northeastern University** (Boston), GPA 3.7 — coursework in Distributed Systems, Machine Learning, Databases, and Software Engineering.
 
-## Tech Stack
+**Previously:** Software Engineer and intern at **WebCraft IT** (Indore, India): Spring Boot and React/TypeScript full stack, PostgreSQL, AWS, CI/CD, and features used by **10,000+ daily users** across multiple enterprise systems.
 
-### Core
+Content in the app is driven from [`src/data/portfolioData.ts`](src/data/portfolioData.ts) so you can keep the README and the site aligned when you update copy.
 
-- React 18
-- TypeScript
-- Vite
+## Featured work
 
-### Animation and 3D
+| Project | Focus | Stack (high level) |
+| -------- | ----- | ------------------- |
+| [AI-Powered Document Intelligence](https://github.com/rahul24sharma/AI-Powered-Legal-Document-Intelligence-platform) | LLM-powered extraction | Python, FastAPI, OpenAI, RAG, PostgreSQL, Docker, AWS |
+| Distributed Payment Processing | Event-driven finance | Java, Spring Boot, Kafka, PostgreSQL, Redis, AWS |
+| [Cloud-Native Health Tracker](https://github.com/rahul24sharma/webapp) | Full stack + IaC | Node.js, Express, MySQL, Terraform, Packer, AWS |
+| [Fantasy Edge](https://fantasy-edge-seven.vercel.app/) | Live sports fan product | TypeScript, React, Next.js |
+| [AI Voice Interview Platform](https://full-stack-real-time-ai-voice-agent-interview-platform-tawny.vercel.app/) | Real-time voice AI | TypeScript, React, voice APIs |
 
-- GSAP + `@gsap/react`
-- Three.js
-- `@react-three/fiber`
-- `@react-three/drei`
-- `@react-three/postprocessing`
-- `@react-three/cannon`
-- `@react-three/rapier`
+## Tech stack (this repository)
 
-### Supporting Libraries
+- **Core:** React 18, TypeScript, Vite  
+- **3D:** Three.js, React Three Fiber, Drei, physics (Rapier / Cannon)  
+- **Motion:** GSAP, ScrollTrigger, ScrollSmoother, SplitText  
+- **UI:** Custom CSS, responsive layout, accessibility touches (skip link, landmarks)  
+- **Analytics:** [@vercel/analytics](https://vercel.com/docs/analytics)
 
-- `react-icons`
-- `react-fast-marquee`
-- `@vercel/analytics`
+## Getting started
 
-## Project Structure
+**Requirements:** Node.js **18+** (see `engines` in `package.json`).
 
-```text
-.
-├── public/                    # Static assets
-├── src/
-│   ├── assets/                # Local media/assets
-│   ├── components/
-│   │   ├── Character/         # 3D scene + character logic/utilities
-│   │   ├── styles/            # Section/component CSS files
-│   │   ├── About.tsx
-│   │   ├── Career.tsx
-│   │   ├── Contact.tsx
-│   │   ├── Landing.tsx
-│   │   ├── MainContainer.tsx  # Main page composition
-│   │   ├── Navbar.tsx
-│   │   ├── TechStack.tsx
-│   │   ├── WhatIDo.tsx
-│   │   └── Work.tsx
-│   ├── context/               # Global providers (loading state, etc.)
-│   ├── data/                  # Static data/content definitions
-│   ├── App.tsx
-│   └── main.tsx
-├── package.json
-└── vite.config.ts
+```bash
+git clone <your-repo-url>
+cd 3d-portfolio
+npm install
+npm run dev
 ```
 
-## Getting Started
+Open the URL Vite prints (often `http://localhost:5173`).
 
-### Prerequisites
+### Scripts
 
-- Node.js 18+ (recommended)
-- npm 9+ (or compatible)
+| Command | Description |
+| ------- | ----------- |
+| `npm run dev` | Dev server (`--host` for LAN devices) |
+| `npm run build` | `tsc -b` + production bundle to `dist/` |
+| `npm run preview` | Serve `dist/` locally |
+| `npm run lint` | ESLint |
 
-### Installation
+## Customization
 
-1. Clone the repository:
+- **Copy & links:** [`src/data/portfolioData.ts`](src/data/portfolioData.ts)  
+- **Sections:** `src/components/` (About, Work, Career, Contact, etc.)  
+- **Styles:** `src/components/styles/`, `src/index.css`  
+- **3D & scroll:** `src/components/Character/`, `src/components/utils/GsapScroll.ts`, `src/components/utils/initialFX.ts`
 
-   ```bash
-   git clone <your-repository-url>
-   cd 3d-portfolio
-   ```
+## Deployment (Vercel)
 
-2. Install dependencies:
+Production builds are static and work well on **Vercel** with **HTTPS** by default.
 
-   ```bash
-   npm install
-   ```
+1. `npm run build` — confirm `dist/` looks good (`npm run preview`).  
+2. Import the Git repository in Vercel.  
+3. If the app lives in a subfolder (e.g. `Portfolio-26/3d-portfolio`), set **Root Directory** to `3d-portfolio`.  
+4. `vercel.json` in this folder configures SPA routing and security headers.
 
-3. Start the local development server:
+## GSAP
 
-   ```bash
-   npm run dev
-   ```
-
-4. Open the URL shown in the terminal (typically `http://localhost:5173`).
-
-## Available Scripts
-
-- `npm run dev`  
-  Starts Vite dev server and exposes host for local network testing.
-
-- `npm run build`  
-  Type-checks and builds a production-ready bundle.
-
-- `npm run preview`  
-  Serves the production build locally for verification.
-
-- `npm run lint`  
-  Runs ESLint checks across the project.
-
-## GSAP License Note
-
-This project uses the standard `gsap` package, including bonus plugins now available in the core package.
-
-- Install dependencies with `npm install`.
-- If migrating from older setups, remove `gsap-trial` from your project.
-
-Read official installation guidance here: [GSAP Installation Docs](https://gsap.com/docs/v3/Installation/)
-
-## Customization Guide
-
-You can adapt this portfolio to your own profile by updating the following areas:
-
-- **Content sections**: Edit files in `src/components/` such as `About.tsx`, `Career.tsx`, `WhatIDo.tsx`, and `Work.tsx`.
-- **Data source**: Update static values in files under `src/data/`.
-- **Styling**: Modify component styles in `src/components/styles/` and global styles in `src/index.css` / `src/App.css`.
-- **3D scene behavior**: Adjust scene logic in `src/components/Character/` and related utilities.
-- **Animations**: Tweak GSAP utilities under `src/components/utils/`.
-
-## Troubleshooting
-
-- **Blank screen in development**  
-  Check browser console for module import errors and verify all dependencies are installed.
-
-- **3D performance issues on low-end devices**  
-  Reduce scene complexity and post-processing effects in the character/scene utilities.
-
-- **GSAP plugin errors**  
-  Ensure you have the correct plugin package and license configuration for your target environment.
-
-- **TypeScript build failures**  
-  Run `npm run build` and address reported type errors before deploying.
-
-## Deployment
-
-1. Create a production build:
-
-   ```bash
-   npm run build
-   ```
-
-2. Validate locally:
-
-   ```bash
-   npm run preview
-   ```
-
-3. Deploy the generated `dist/` folder to your hosting provider (for example Vercel, Netlify, or Cloudflare Pages).
+This project uses the standard `gsap` package (including plugins distributed with it). See the [official installation docs](https://gsap.com/docs/v3/Installation/) if you upgrade or change tooling.
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+See [LICENSE](LICENSE).
+
+---
+
+Built and maintained by **Rahul Sharma**.
